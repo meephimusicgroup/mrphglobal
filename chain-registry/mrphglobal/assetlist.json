@@ -13,7 +13,7 @@
       "display": "MRPH",
       "symbol": "MRPH",
       "logo_URIs": {
-        "svg": "https://raw.githubusercontent.com/mrphglobal/mrphglobal/main/scripts/prod/explorer/mrphglobal.svg"
+        "svg": "https://raw.githubusercontent.com/meephimusicgroup/mrphglobal/master/scripts/prod/explorer/mrphglobal.svg"
       },
       "type_asset": "sdk.coin"
     }

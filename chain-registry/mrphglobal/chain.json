@@ -25,7 +25,7 @@
     "staking_tokens": [{ "denom": "umrph" }]
   },
   "codebase": {
-    "git_repo": "https://github.com/mrphglobal/mrphglobal",
+    "git_repo": "https://github.com/meephimusicgroup/mrphglobal",
     "recommended_version": "v1.0.0",
     "compatible_versions": ["v1.0.0"]
   },
@@ -53,7 +53,7 @@
   ],
   "images": [
     {
-      "svg": "https://raw.githubusercontent.com/mrphglobal/mrphglobal/main/scripts/prod/explorer/mrphglobal.svg"
+      "svg": "https://raw.githubusercontent.com/meephimusicgroup/mrphglobal/master/scripts/prod/explorer/mrphglobal.svg"
     }
   ]
 }

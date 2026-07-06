@@ -1,5 +1,6 @@
 # MRPH Global — Sovereign Layer-1 Blockchain
 
+[![GitHub](https://img.shields.io/badge/GitHub-meephimusicgroup%2Fmrphglobal-181717?style=flat-square&logo=github)](https://github.com/meephimusicgroup/mrphglobal)
 [![Live Network](https://img.shields.io/badge/network-live-00d4aa?style=flat-square)](http://167.233.230.221:8080/landing.html)
 [![Explorer](https://img.shields.io/badge/explorer-mrphglobal--1-6c63ff?style=flat-square)](http://167.233.230.221:8080/ping/mrphglobal)
 [![Telegram](https://img.shields.io/badge/bot-@mrphglobal__bot-26A5E4?style=flat-square&logo=telegram)](https://t.me/mrphglobal_bot)
