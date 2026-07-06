@@ -1,0 +1,19 @@
+[Unit]
+Description=MRPH Global Cosmos SDK Node
+Documentation=https://docs.cosmos.network
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/mrphglobald start --home /root/.mrphglobal
+Restart=always
+RestartSec=3
+LimitNOFILE=65535
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=mrphglobald
+
+[Install]
+WantedBy=multi-user.target

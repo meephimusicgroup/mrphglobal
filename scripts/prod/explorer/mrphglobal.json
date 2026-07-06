@@ -1,0 +1,32 @@
+{
+  "chain_name": "mrphglobal",
+  "registry_name": "MRPH Global",
+  "chain_id": "mrphglobal-1",
+  "api": [
+    {
+      "provider": "MRPH Global",
+      "address": "http://167.233.230.221:1317"
+    }
+  ],
+  "rpc": [
+    {
+      "provider": "MRPH Global",
+      "address": "http://167.233.230.221:26657"
+    }
+  ],
+  "sdk_version": "0.53.6",
+  "coin_type": "118",
+  "min_tx_fee": "200",
+  "addr_prefix": "mrph",
+  "theme_color": "#1a1a2e",
+  "logo": "/logos/mrphglobal.svg",
+  "features": ["dashboard", "blocks", "ibc", "parameters", "supply", "consensus", "uptime", "transactions"],
+  "assets": [
+    {
+      "base": "umrph",
+      "symbol": "MRPH",
+      "exponent": "6",
+      "logo": "/logos/mrphglobal.svg"
+    }
+  ]
+}

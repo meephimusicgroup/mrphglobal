@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MRPH Global — sovereign Cosmos SDK blockchain. Transfers 24/7, no borders." />
+  <title>MRPH Global — Sovereign Blockchain</title>
+  <link rel="icon" href="/logos/mrphglobal.svg" type="image/svg+xml" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    :root {
+      --bg: #08080f;
+      --surface: #12121f;
+      --surface2: #1a1a2e;
+      --accent: #7c6cff;
+      --accent2: #00d4aa;
+      --text: #eeeef8;
+      --muted: #7a7a9a;
+      --border: rgba(255,255,255,.07);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .bg {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124,108,255,.25), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 50%, rgba(0,212,170,.08), transparent),
+        radial-gradient(ellipse 50% 30% at 0% 80%, rgba(124,108,255,.1), transparent);
+    }
+    .grid-bg {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .04;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    header {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1100px; margin: 0 auto; padding: 1.25rem 1.5rem;
+    }
+    .logo { display: flex; align-items: center; gap: .75rem; font-weight: 700; font-size: 1.1rem; }
+    .logo-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #4f46e5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 800;
+    }
+    .live-pill {
+      display: flex; align-items: center; gap: .5rem;
+      background: rgba(0,212,170,.1); border: 1px solid rgba(0,212,170,.3);
+      color: var(--accent2); padding: .4rem .9rem; border-radius: 999px;
+      font-size: .8rem; font-weight: 600;
+    }
+    .live-pill .dot {
+      width: 7px; height: 7px; background: var(--accent2); border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.85)} }
+    main { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+    .hero { text-align: center; padding: 3rem 0 2.5rem; }
+    .hero .tag {
+      display: inline-block; margin-bottom: 1.25rem;
+      font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--accent); background: rgba(124,108,255,.12);
+      border: 1px solid rgba(124,108,255,.25); padding: .4rem 1rem; border-radius: 999px;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 800;
+      line-height: 1.1; letter-spacing: -.03em; margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff 30%, #a59fff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p { color: var(--muted); font-size: 1.1rem; max-width: 540px; margin: 0 auto 2rem; line-height: 1.7; }
+    .cta { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; margin-bottom: 3rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .85rem 1.5rem; border-radius: 12px;
+      font-weight: 600; font-size: .95rem; text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #5b4fe8);
+      color: #fff; box-shadow: 0 8px 32px rgba(124,108,255,.35);
+    }
+    .btn-secondary {
+      background: var(--surface2); color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem; margin-bottom: 2.5rem;
+    }
+    .stat {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.25rem; text-align: center;
+    }
+    .stat .label {
+      font-size: .7rem; text-transform: uppercase; letter-spacing: .1em;
+      color: var(--muted); margin-bottom: .5rem;
+    }
+    .stat .value { font-size: 1.6rem; font-weight: 700; }
+    .stat .sub { font-size: .75rem; color: var(--muted); margin-top: .25rem; }
+    .features {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .feat {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem;
+    }
+    .feat .icon { font-size: 1.75rem; margin-bottom: .75rem; }
+    .feat h3 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; }
+    .feat p { font-size: .875rem; color: var(--muted); line-height: 1.6; }
+    footer {
+      position: relative; z-index: 1; text-align: center;
+      padding: 2rem; color: var(--muted); font-size: .8rem;
+      border-top: 1px solid var(--border); margin-top: 3rem;
+    }
+    .lang { display: flex; gap: .5rem; justify-content: center; margin-top: 1rem; }
+    .lang button {
+      background: none; border: none; color: var(--muted); cursor: pointer;
+      font-size: .8rem; padding: .25rem .5rem;
+    }
+    .lang button.active { color: var(--accent); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="grid-bg"></div>
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon">M</div>
+      MRPH Global
+    </div>
+    <div class="live-pill"><span class="dot"></span><span id="pill-status">LIVE</span></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="tag" data-i18n="tag">Sovereign Layer-1 · Cosmos SDK</div>
+      <h1>MRPH Global</h1>
+      <p data-i18n="hero">Your own blockchain. Send MRPH anywhere in the world — 24/7, no banks, no borders.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="/ping/mrphglobal">🔍 Explorer</a>
+        <a class="btn btn-secondary" href="https://t.me/mrphglobal_bot" target="_blank" rel="noopener">💬 Telegram Wallet</a>
+        <a class="btn btn-ghost" href="/ping/mrphglobal" data-i18n="blocks">📦 Explorer</a>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <div class="label" data-i18n="s-height">Block Height</div>
+        <div class="value" id="height">—</div>
+        <div class="sub" data-i18n="s-height-sub">growing 24/7</div>
+      </div>
+      <div class="stat">
+        <div class="label" data-i18n="s-validators">Validators</div>
+        <div class="value" id="validators">—</div>
+        <div class="sub">mrphglobal-1</div>
+      </div>
+      <div class="stat">
+        <div class="label" data-i18n="s-supply">Total Supply</div>
+        <div class="value" id="supply">—</div>
+        <div class="sub">MRPH</div>
+      </div>
+      <div class="stat">
+        <div class="label" data-i18n="s-fee">Min Fee</div>
+        <div class="value">0.2</div>
+        <div class="sub">MRPH / tx</div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feat">
+        <div class="icon">⚡</div>
+        <h3 data-i18n="f1t">24/7 Network</h3>
+        <p data-i18n="f1d">The node runs around the clock. Transfers confirm in seconds, any time zone.</p>
+      </div>
+      <div class="feat">
+        <div class="icon">🌍</div>
+        <h3 data-i18n="f2t">Borderless</h3>
+        <p data-i18n="f2d">Send MRPH to any mrph... address worldwide. No SWIFT, no business hours.</p>
+      </div>
+      <div class="feat">
+        <div class="icon">🚇</div>
+        <h3 data-i18n="f3t">IBC Ready</h3>
+        <p data-i18n="f3d">Inter-Blockchain Communication module enabled. Cross-chain tunnel coming via relayer.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>MRPH Global · mrphglobal-1 · <span id="foot-status">—</span></div>
+    <div class="lang">
+      <button type="button" class="active" data-lang="ru">RU</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ja">JA</button>
+    </div>
+  </footer>
+
+  <script>
+    const i18n = {
+      ru: {
+        tag: 'Суверенный Layer-1 · Cosmos SDK',
+        hero: 'Ваш собственный блокчейн. Отправляйте MRPH в любую точку мира — 24/7, без банков и границ.',
+        blocks: '📦 Блоки',
+        's-height': 'Высота блока', 's-height-sub': 'растёт 24/7',
+        's-validators': 'Валидаторы', 's-supply': 'Общий supply',
+        's-fee': 'Мин. комиссия',
+        f1t: 'Сеть 24/7', f1d: 'Нода работает круглосуточно. Переводы за секунды — в любой часовой пояс.',
+        f2t: 'Без границ', f2d: 'MRPH на любой адрес mrph... в мире. Без SWIFT и выходных.',
+        f3t: 'IBC готов', f3d: 'Модуль межсетевой связи включён. Туннель в другие Cosmos-сети — через relayer.',
+        live: 'Сеть LIVE · 24/7', sync: 'Синхронизация…', off: 'Нода онлайн'
+      },
+      en: {
+        tag: 'Sovereign Layer-1 · Cosmos SDK',
+        hero: 'Your own blockchain. Send MRPH anywhere in the world — 24/7, no banks, no borders.',
+        blocks: '📦 Blocks',
+        's-height': 'Block Height', 's-height-sub': 'growing 24/7',
+        's-validators': 'Validators', 's-supply': 'Total Supply',
+        's-fee': 'Min Fee',
+        f1t: '24/7 Network', f1d: 'The node runs around the clock. Transfers confirm in seconds.',
+        f2t: 'Borderless', f2d: 'Send MRPH to any mrph... address worldwide.',
+        f3t: 'IBC Ready', f3d: 'Cross-chain tunnel to other Cosmos networks via relayer.',
+        live: 'Network LIVE · 24/7', sync: 'Syncing…', off: 'Node online'
+      },
+      ja: {
+        tag: '主権 Layer-1 · Cosmos SDK',
+        hero: 'あなた自身のブロックチェーン。MRPHを世界中へ — 24時間365日、国境なし。',
+        blocks: '🔍 Explorer',
+        's-height': 'ブロック高', 's-height-sub': '24/7 成長中',
+        's-validators': 'バリデータ', 's-supply': '総供給量',
+        's-fee': '最小手数料',
+        f1t: '24/7 ネットワーク', f1d: 'ノードは常時稼働。送金は数秒で完了。',
+        f2t: '国境なし', f2d: '世界中の mrph... アドレスへ MRPH を送信。',
+        f3t: 'IBC 対応', f3d: 'Relayer 経由で Cosmos チェーン間トンネル。',
+        live: 'ネットワーク LIVE · 24/7', sync: '同期中…', off: 'ノードオンライン'
+      }
+    };
+
+    function setLang(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.getAttribute('data-i18n');
+        if (i18n[lang][k]) el.textContent = i18n[lang][k];
+      });
+      document.querySelectorAll('.lang button').forEach(b =>
+        b.classList.toggle('active', b.dataset.lang === lang));
+      window.__lang = lang;
+    }
+    document.querySelectorAll('.lang button').forEach(b =>
+      b.addEventListener('click', () => setLang(b.dataset.lang)));
+    setLang(navigator.language.startsWith('ja') ? 'ja' : navigator.language.startsWith('ru') ? 'ru' : 'en');
+
+    function fmtMrph(umrph) {
+      const mrph = Number(umrph) / 1e6;
+      if (mrph >= 1e9) return (mrph / 1e9).toFixed(0) + 'B';
+      if (mrph >= 1e6) return (mrph / 1e6).toFixed(0) + 'M';
+      return mrph.toLocaleString(undefined, { maximumFractionDigits: 0 });
+    }
+
+    async function load() {
+      const lang = window.__lang || 'en';
+      try {
+        const [rpc, val, sup] = await Promise.all([
+          fetch('/api/rpc/status').then(r => r.json()),
+          fetch('/api/lcd/cosmos/staking/v1beta1/validators?status=BOND_STATUS_BONDED&pagination.limit=100').then(r => r.json()),
+          fetch('/api/lcd/cosmos/bank/v1beta1/supply/by_denom?denom=umrph').then(r => r.json()),
+        ]);
+        const s = rpc.result.sync_info;
+        document.getElementById('height').textContent = Number(s.latest_block_height).toLocaleString();
+        const st = s.catching_up ? i18n[lang].sync : i18n[lang].live;
+        document.getElementById('pill-status').textContent = st;
+        document.getElementById('foot-status').textContent = st;
+        document.getElementById('validators').textContent = (val.validators || []).length || '1';
+        const amt = sup.amount?.amount || '0';
+        document.getElementById('supply').textContent = fmtMrph(amt);
+      } catch {
+        document.getElementById('pill-status').textContent = i18n[lang].off;
+      }
+    }
+    load();
+    setInterval(load, 15000);
+  </script>
+</body>
+</html>

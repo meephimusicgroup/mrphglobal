@@ -1,0 +1,59 @@
+{
+  "$schema": "../chain.schema.json",
+  "chain_name": "mrphglobal",
+  "chain_id": "mrphglobal-1",
+  "pretty_name": "MRPH Global",
+  "status": "live",
+  "network_type": "mainnet",
+  "bech32_prefix": "mrph",
+  "daemon_name": "mrphglobald",
+  "node_home": "$HOME/.mrphglobal",
+  "key_algos": ["secp256k1"],
+  "slip44": 118,
+  "fees": {
+    "fee_tokens": [
+      {
+        "denom": "umrph",
+        "fixed_min_gas_price": 0.2,
+        "low_gas_price": 0.2,
+        "average_gas_price": 0.2,
+        "high_gas_price": 0.5
+      }
+    ]
+  },
+  "staking": {
+    "staking_tokens": [{ "denom": "umrph" }]
+  },
+  "codebase": {
+    "git_repo": "https://github.com/mrphglobal/mrphglobal",
+    "recommended_version": "v1.0.0",
+    "compatible_versions": ["v1.0.0"]
+  },
+  "apis": {
+    "rpc": [
+      {
+        "address": "http://167.233.230.221:26657",
+        "provider": "MRPH Global"
+      }
+    ],
+    "rest": [
+      {
+        "address": "http://167.233.230.221:1317",
+        "provider": "MRPH Global"
+      }
+    ]
+  },
+  "explorers": [
+    {
+      "kind": "ping-pub",
+      "url": "http://167.233.230.221:8080/ping/mrphglobal",
+      "tx_page": "http://167.233.230.221:8080/ping/mrphglobal/tx/${txHash}",
+      "account_page": "http://167.233.230.221:8080/ping/mrphglobal/account/${accountAddress}"
+    }
+  ],
+  "images": [
+    {
+      "svg": "https://raw.githubusercontent.com/mrphglobal/mrphglobal/main/scripts/prod/explorer/mrphglobal.svg"
+    }
+  ]
+}

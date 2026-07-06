@@ -1,0 +1,47 @@
+version: 1
+validation: sovereign
+default_denom: umrph
+accounts:
+  - name: treasury
+    coins:
+      - 1000000000000000umrph
+  - name: validator
+    coins:
+      - 100100000000umrph
+validators:
+  - name: validator
+    bonded: 100000000000umrph
+faucet:
+  name: treasury
+  coins:
+    - 1000000umrph
+genesis:
+  chain_id: mrphglobal-1
+  app_state:
+    staking:
+      params:
+        bond_denom: umrph
+    mint:
+      params:
+        mint_denom: umrph
+    gov:
+      params:
+        min_deposit:
+          - denom: umrph
+            amount: "1000000"
+    crisis:
+      constant_fee:
+        denom: umrph
+        amount: "1000"
+    bank:
+      denom_metadata:
+        - description: MRPH Global native token
+          denom_units:
+            - denom: umrph
+              exponent: 0
+            - denom: MRPH
+              exponent: 6
+          base: umrph
+          display: MRPH
+          name: MRPH
+          symbol: MRPH

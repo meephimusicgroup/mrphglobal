@@ -1,0 +1,21 @@
+{
+  "$schema": "../assetlist.schema.json",
+  "chain_name": "mrphglobal",
+  "assets": [
+    {
+      "description": "Native token of MRPH Global sovereign blockchain",
+      "denom_units": [
+        { "denom": "umrph", "exponent": 0 },
+        { "denom": "mrph", "exponent": 6 }
+      ],
+      "base": "umrph",
+      "name": "MRPH Global",
+      "display": "MRPH",
+      "symbol": "MRPH",
+      "logo_URIs": {
+        "svg": "https://raw.githubusercontent.com/mrphglobal/mrphglobal/main/scripts/prod/explorer/mrphglobal.svg"
+      },
+      "type_asset": "sdk.coin"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+[Unit]
+Description=MRPH Global Telegram Wallet Bot
+Documentation=file:///opt/mrphglobal/docs/TELEGRAM_BOT.md
+After=network-online.target mrphglobald.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/mrph-telegram-bot
+EnvironmentFile=/opt/mrph-telegram-bot/.env
+ExecStart=/usr/bin/node /opt/mrph-telegram-bot/dist/index.js
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=mrph-telegram-bot
+
+[Install]
+WantedBy=multi-user.target

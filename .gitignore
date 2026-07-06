@@ -1,0 +1,21 @@
+vue/node_modules
+vue/dist
+release/
+.idea/
+.vscode/
+.DS_Store
+*.dot
+*.log
+*.ign
+
+# MRPH Global
+/mrphglobald
+/mrphglobald.exe
+_scaffold_tmp/
+**/priv_validator_key.json
+**/node_key.json
+**/*.pem
+telegram-bot/.env
+telegram-bot/data/
+telegram-bot/node_modules/
+telegram-bot/dist/
