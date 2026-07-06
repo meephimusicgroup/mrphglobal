@@ -6,7 +6,7 @@
 version: v2
 plugins:
   - local: ["go", "tool", "github.com/cosmos/gogoproto/protoc-gen-gocosmos"]
-    out: .
+    out: ..
     opt:
       - plugins=grpc
       - Mgoogle/protobuf/any.proto=github.com/cosmos/gogoproto/types/any
@@ -18,7 +18,7 @@ plugins:
         "tool",
         "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway",
       ]
-    out: .
+    out: ..
     opt:
       - logtostderr=true
       - allow_colon_final_segments=true
