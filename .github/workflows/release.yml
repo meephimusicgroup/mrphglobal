@@ -27,6 +27,9 @@ jobs:
       - name: Verify modules
         run: go mod verify
 
+      - name: Generate protobuf
+        run: bash scripts/ci-generate-proto.sh
+
       - name: Build release binaries
         env:
           GOFLAGS: "-buildvcs=false"

@@ -23,6 +23,7 @@ jobs:
           GOFLAGS: "-buildvcs=false"
         run: |
           go mod verify
+          bash scripts/ci-generate-proto.sh
           go build -mod=readonly -o /tmp/mrphglobald ./cmd/mrphglobald
 
       - name: Unit tests
